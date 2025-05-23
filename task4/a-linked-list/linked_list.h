@@ -19,9 +19,9 @@ typedef struct {
 
 
 linkedList* initialize ();
-Node* createNode(int x);
+Node* createNode(int x, Node* next);
 void insertatEnd (linkedList *l, int x);
 void displayList (linkedList *l);
-
+void freeList(linkedList *l);
 
 #endif

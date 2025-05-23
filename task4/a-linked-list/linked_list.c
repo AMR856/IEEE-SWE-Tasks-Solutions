@@ -3,20 +3,19 @@
 linkedList* initialize (){
     linkedList *linkedlist = (linkedList *)malloc(sizeof(linkedList));
     linkedlist->length = 0;
-    linkedlist->head = (Node *)malloc(sizeof(Node));
-    linkedlist->head->next = NULL;
-    linkedlist->head->data = INT_MIN;
+    linkedlist->head = createNode(INT_MIN, NULL);
     return linkedlist;
 }
 
-Node* createNode(int x){
+Node* createNode(int x, Node* next){
   Node *node = (Node *)malloc(sizeof(Node));
   if (node == NULL){
     printf("Failed Allocation for the new node\n");
     return NULL;
   }
-  node->next = NULL;
+  node->next = next;
   node->data = x;
+  return node;
 }
 
 void insertatEnd (linkedList *l, int x){
@@ -25,11 +24,9 @@ void insertatEnd (linkedList *l, int x){
         l->length++;
         return;
     }
-    Node *temp = (Node *)malloc(sizeof(Node));
     Node *current = l->head;
     while(current->next != NULL) current = current->next;
-    temp->data = x;
-    temp->next = NULL;
+    Node *temp = createNode(x, NULL);
     current->next = temp;
     l->length++;
 }
@@ -45,4 +42,14 @@ void displayList (linkedList *l){
         current = current->next;
     }
     putchar('\n');
+}
+
+void freeList(linkedList *l){
+    Node *current = l->head;
+    while (current != NULL) {
+        Node *temp = current;
+        current = current->next;
+        free(temp);
+    }
+    free(l);
 }
