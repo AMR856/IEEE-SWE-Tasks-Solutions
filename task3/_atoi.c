@@ -14,7 +14,11 @@ void write_error(int fd, char *s);
 
 int main(void){
   if (truncate(NUM_FILE, 0) != 0) {
-    fprintf(stderr, "Error truncating the file\n");
+    write_error(STDERR_FILENO ,"Error truncating the file\n");
+    exit(1);
+  }
+  if (truncate(ERROR_FILE, 0) != 0) {
+    write_error(STDERR_FILENO ,"Error truncating the file\n");
     exit(1);
   }
   char *inputs[] = {
@@ -82,6 +86,7 @@ int _atoi(char *s){
 
   int fd2 = open(ERROR_FILE, O_CREAT | O_WRONLY | O_APPEND, 0644);
   if (fd2 == -1) {
+    close(fd1);
     write_error(STDERR_FILENO, "Error opening the file\n");
     return 1;
   }
@@ -94,6 +99,8 @@ int _atoi(char *s){
         if (_isalpha(s[i])){
           write_error(fd2,
             "Number contains chars in the place where signs should exist\n");
+          close(fd1);
+          close(fd2);
           return 0;
         } else if (s[i] == ' ' ||
           s[i] == '\t' || s[i] == '\n') {
@@ -124,6 +131,7 @@ int _atoi(char *s){
       if (plus_num < minus_num) num = -num;
       _putchar('\n', fd1);
       close(fd1);
+      close(fd2);
       return num;
     }
     _putchar(s[i], fd1);
@@ -133,6 +141,7 @@ int _atoi(char *s){
   if (plus_num < minus_num) num = -num;
   _putchar('\n', fd1);
   close(fd1);
+  close(fd2);
   return num;
 }
 // 1
