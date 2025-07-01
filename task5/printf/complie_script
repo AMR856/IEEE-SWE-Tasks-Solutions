@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ -f "main" ]; then
+    rm "main"
+fi
+gcc *.c -o main
