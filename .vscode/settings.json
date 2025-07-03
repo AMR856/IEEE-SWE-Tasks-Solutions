@@ -1,7 +1,0 @@
-{
-  "files.associations": {
-    "linked_list.h": "c",
-    "unistd.h": "c",
-    "cstdlib": "c"
-  }
-}

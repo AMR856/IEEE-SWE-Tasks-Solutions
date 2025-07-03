@@ -88,6 +88,22 @@ int _printf(const char *format, ...){
                     }
                 }
                 format++;
+            } else if (*format == 'p'){
+                unsigned long int num = va_arg(args, unsigned long);
+                char *str = (char *)malloc(MAX_STRING_SIZE);
+                char *start = str;
+                if (num == 0)
+                    return _puts("(nil)");
+                citoa(num, str, 16, false, false);
+                _putchar('0');
+                _putchar('x');
+                char_printed += 2;
+                while (*str != '\0'){
+                    _putchar(*str);
+                    str++;
+                    char_printed++;
+                }
+                free(start);
             }
         } else _putchar(*format);
         format++;

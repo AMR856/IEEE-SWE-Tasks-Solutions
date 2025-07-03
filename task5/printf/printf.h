@@ -17,6 +17,7 @@ char *_toupper(const char *str);
 bool _islower(char c);
 bool _isupper(char c);
 bool _isalpha(char c);
+int _puts(char *s);
 char* citoa(int num, char* str, int base, bool canbeNegative, bool cap);
 int _printf(const char *format, ...);
 

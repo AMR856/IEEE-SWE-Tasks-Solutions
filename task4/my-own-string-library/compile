@@ -2,4 +2,4 @@
 if [ -f "main" ]; then
   rm main
 fi
-gcc _string.h _string.c reshape.c main.c -o main
+gcc *.c -o main

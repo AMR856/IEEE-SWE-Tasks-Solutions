@@ -1,5 +1,8 @@
 #include "./printf.h"
 
+
+// String Functions
+
 size_t my_strlen(const char *s){
     size_t length = 0;
     const char *temp = s;
@@ -19,6 +22,11 @@ const char *my_strcpy(char *dest, const char *src){
     }
     *dest = '\0';
     return temp;
+}
+
+int _puts(char *s){
+    int status = write(1, s, my_strlen(s));
+    return status;
 }
 
 bool _isalpha(char c){
@@ -74,6 +82,7 @@ char * _toupper(const char *str){
     upperString = start;
     return upperString;
 }
+
 
 char* citoa(int num, char* str, int base, bool canbeNegative, bool cap)
 {

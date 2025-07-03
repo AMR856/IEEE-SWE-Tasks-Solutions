@@ -1,0 +1,3 @@
+#!/bin/bash
+gcc -fPIC -shared -o libmylib.so _string.c
+gcc main.c -L. -lmylib -Wl,-rpath=. -o main

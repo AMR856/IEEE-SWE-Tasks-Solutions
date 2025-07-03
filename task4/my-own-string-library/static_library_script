@@ -1,0 +1,4 @@
+#!/bin/bash
+gcc -c _string.c -o _string.o
+ar rcs libmylib.a _string.o
+gcc main.c -L. -lmylib -o main
