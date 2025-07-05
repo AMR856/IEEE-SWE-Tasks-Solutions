@@ -1,4 +1,3 @@
 Number contains chars in the place where signs should exist
-Number contains chars or signs in the middle
-Number contains chars or signs in the middle
-Number contains chars or signs in the middle
+Number contains chars in the place where signs should exist
+Number contains chars in the place where signs should exist

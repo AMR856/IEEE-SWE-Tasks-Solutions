@@ -33,3 +33,8 @@ void truncate_file(char *filename){
     exit(1);
   }
 }
+
+int _abs(int num){
+  if (num < 0) num = -num;
+  return num;
+}

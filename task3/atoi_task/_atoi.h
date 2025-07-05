@@ -11,6 +11,8 @@ int _atoi(char *s);
 int _strlen(char *s);
 int _putchar(char c, int fd);
 int _isalpha(char c);
+int _abs(int num);
+int sum_args(int argc, char **argv);
 void write_error(int fd, char *s);
 void truncate_file(char *filename);
 
